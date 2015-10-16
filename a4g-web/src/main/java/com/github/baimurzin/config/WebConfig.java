@@ -24,7 +24,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     @Bean
     public ViewResolver resolver() {
         InternalResourceViewResolver url = new InternalResourceViewResolver();
-        url.setPrefix("/WEB-INF/");
+        url.setPrefix("/app/");
         url.setSuffix(".html");
         return url;
     }
@@ -79,6 +79,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 //        registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
 //        registry.addResourceHandler(Constants.EXTERNAL_PATH + "/**").addResourceLocations("file:///" + env.getProperty("image.upload.path")).setCachePeriod(86400);
 
+        registry.addResourceHandler("/static/**").addResourceLocations("/app/");
         /**
          * swagger UI resources
          */
