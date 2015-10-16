@@ -6,7 +6,6 @@
       <module fileurl="file://$PROJECT_DIR$/a4g-model/a4g-model.iml" filepath="$PROJECT_DIR$/a4g-model/a4g-model.iml" />
       <module fileurl="file://$PROJECT_DIR$/a4g-service/a4g-service.iml" filepath="$PROJECT_DIR$/a4g-service/a4g-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/a4g-web/a4g-web.iml" filepath="$PROJECT_DIR$/a4g-web/a4g-web.iml" />
-      <module fileurl="file://$PROJECT_DIR$/a4g-web/a4g-web.iml" filepath="$PROJECT_DIR$/a4g-web/a4g-web.iml" />
     </modules>
   </component>
 </project>
