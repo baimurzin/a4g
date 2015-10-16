@@ -32,9 +32,15 @@
         <!-- Bean validation -->
         <hibernate-validator.version>5.0.1.Final</hibernate-validator.version>
 
-
-
     </properties>
+
+    <repositories>
+        <repository>
+            <id>jcenter-release</id>
+            <name>jcenter</name>
+            <url>http://oss.jfrog.org/artifactory/oss-release-local/</url>
+        </repository>
+    </repositories>
 
     <dependencyManagement>
         <dependencies>
@@ -190,6 +196,12 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
             <version>${spring.version}</version>
+        </dependency>
+        <!--SWAGGER-->
+        <dependency>
+            <groupId>com.mangofactory</groupId>
+            <artifactId>swagger-springmvc</artifactId>
+            <version>1.0.0</version>
         </dependency>
     </dependencies>
 

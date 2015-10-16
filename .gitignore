@@ -11,6 +11,15 @@ workspace.xml
 junitvmwatcher*.properties
 build.properties
 
+/.idea
+/A4G.iml
+/a4g-web/a4g-web.iml
+/a4g-web/target
+/target
+/a4g-service/a4g-service.iml
+/a4g-model/a4g-model.iml
+/a4g-model/target
+/a4g-service/target
 # generated java classes and java source files
 #   manually add any custom artifacts that can't be generated from the models
 #   http://confluence.jetbrains.com/display/MPSD25/HowTo+--+MPS+and+Git

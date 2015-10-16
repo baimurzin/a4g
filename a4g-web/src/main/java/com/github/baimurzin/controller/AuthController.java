@@ -4,6 +4,8 @@ import com.github.baimurzin.domain.UserEntity;
 import com.github.baimurzin.dto.UserRegistrationForm;
 import com.github.baimurzin.response.Response;
 import com.github.baimurzin.service.UserService;
+import com.wordnik.swagger.annotations.Api;
+import com.wordnik.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
@@ -20,6 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  * Created by vlad on 16.10.15.
  */
 @Controller
+@Api(value = "registration", description = "registration")
 @RequestMapping()
 public class AuthController {
 
@@ -46,6 +49,7 @@ public class AuthController {
         return userRegistrationForm.getPassword().equals(userRegistrationForm.getConfirmPassword());
     }
 
+    @ApiOperation(httpMethod = "POST", value = "Provides registration new users")
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public @ResponseBody
     Response registerUser(@RequestBody UserRegistrationForm form, HttpServletResponse response, HttpServletRequest request) {

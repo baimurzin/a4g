@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="a4g-web:war">
+    <output-path>$PROJECT_DIR$/a4g-web/target</output-path>
+    <root id="archive" name="ROOT.war">
+      <element id="artifact" artifact-name="a4g-web:war exploded" />
+    </root>
+  </artifact>
+</component>
