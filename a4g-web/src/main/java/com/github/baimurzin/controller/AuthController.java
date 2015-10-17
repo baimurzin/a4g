@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  * Created by vlad on 16.10.15.
  */
 @Controller
-@Api(value = "registration", description = "registration")
+@Api(value = "Authentication", description = "Authentication")
 @RequestMapping()
 public class AuthController {
 
