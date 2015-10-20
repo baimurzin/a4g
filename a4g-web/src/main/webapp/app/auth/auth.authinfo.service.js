@@ -21,13 +21,18 @@ function AuthInfo($location, AuthApiService, $q, $rootScope) {
     return {
         login: function (form) {
             var self = this;
-            return AuthApiService.login(form).then(function (data) {
-                self.checkUser();
+            var data = {j_username: form.username, j_password:form.password};
+            return AuthApiService.login(data).then(function (response) {
+                $rootScope.$broadcast('authStateChanged', true);
+                setUser(response);
+            }, function (error) {
+                return $q.reject(error);
             });
         },
         logout: function () {
             AuthApiService.logout().then(function (e) {
                 clearUser();
+                $rootScope.$broadcast('authStateChanged', false);
             })
         },
         isLogin: function () {

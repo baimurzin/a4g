@@ -9,10 +9,16 @@ angular
 AuthApiService.$inject = ['$http'];
 function AuthApiService($http) {
     return {
-        login:login
-    }
+        login:login,
+        session: session
+    };
 
     function login(form) {
-        return $http.post('')
+        return $http.post('/j_spring_security_check', $.param(form),
+            {headers: {'Content-Type': 'application/x-www-form-urlencoded'}});
+    }
+
+    function session() {
+        return $http.get('/api/session');
     }
 }

@@ -3,6 +3,7 @@ package com.github.baimurzin.controller;
 import com.github.baimurzin.domain.UserEntity;
 import com.github.baimurzin.dto.UserRegistrationForm;
 import com.github.baimurzin.response.Response;
+import com.github.baimurzin.service.UserLoginService;
 import com.github.baimurzin.service.UserService;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
@@ -31,8 +32,8 @@ public class AuthController {
 
     @Autowired
     ShaPasswordEncoder shaPasswordEncoder;
-
-
+    @Autowired
+    private UserLoginService userLoginService;
     private String decodePassword(String password) {
         return shaPasswordEncoder.encodePassword(password, "");
     }
@@ -78,6 +79,19 @@ public class AuthController {
         UserEntity userEntity = userService.createUser(form);
         customResponse.setResponse(userEntity);
         return customResponse;
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/api/session")
+    public @ResponseBody
+    Response session(HttpServletResponse response) {
+        if (!userLoginService.isAuthenticated()){
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            return new Response(HttpServletResponse.SC_UNAUTHORIZED);
+         } else {
+            Response resp = new Response(HttpServletResponse.SC_FOUND);
+            resp.setResponse(userLoginService.getCurrentUser());
+            return resp;
+        }
     }
 
 }

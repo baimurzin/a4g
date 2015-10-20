@@ -9,6 +9,13 @@ public class Response {
     private int code;
     private Object response;
 
+    public Response() {
+    }
+
+    public Response(int code) {
+        this.code = code;
+    }
+
     public int getCode() {
         return code;
     }

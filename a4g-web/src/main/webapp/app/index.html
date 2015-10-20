@@ -3,17 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>A4G</title>
-    <link href="/static/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/vendor/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+<app-header></app-header>
+<div ng-view></div>
 
+<script src="/static/bower_components/angular/angular.min.js"></script>
+<script src="/static/bower_components/angular-route/angular-route.min.js"></script>
+<script src="/static/bower_components/angular-cookies/angular-cookies.min.js"></script>
+<script src="/static/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="/static/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
-    <script src="/static/bower_components/angular/angular.min.js"></script>
-    <script src="/static/bower_components/angular-route/angular-route.min.js"></script>
-    <script src="/static/bower_components/angular-cookies/angular-cookies.min.js"></script>
-    <script src="/static/bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="/static/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/static/app.js"></script>
 
-    <script src="/static/app.js"></script>
+<script src="/static/parts/HeaderDirective.js"></script>
+<script src="/static/header/header.controller.js"></script>
+
+<!--Auth-->
+<script src="/static/auth/auth.module.js"></script>
+<script src="/static/auth/auth.routes.js"></script>
+<script src="/static/auth/auth.authinfo.service.js"></script>
+<script src="/static/auth/AuthApiService.js"></script>
+<script src="/static/auth/RegistrationControler.js"></script>
+<script src="/static/auth/LoginController.js"></script>
+
 </body>
 </html>
