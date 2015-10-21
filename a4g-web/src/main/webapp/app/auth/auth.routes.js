@@ -15,5 +15,8 @@ function AuthRoutes($routeProvider) {
         }).when('/login', {
             templateUrl: '/app/auth/partials/auth.login.template.html',
             controller: 'LoginController as ctrl'
+        }).when('/auth', {
+            controller: 'AuthController',
+            template: ''
         })
 }

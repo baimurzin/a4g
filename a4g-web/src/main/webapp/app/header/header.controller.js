@@ -5,12 +5,19 @@ angular
     .module('a4g')
     .controller('HeaderController', HeaderController);
 
-HeaderController.$inject = ['$http'];
+HeaderController.$inject = ['$http', '$scope', 'AuthInfo'];
 
-function HeaderController($http) {
+function HeaderController($http, $scope, AuthInfo) {
     var vm = this;
     vm.authState = false;
 
+    $scope.$on('authStateChanged', function (e, value) {
+        vm.authState = value;
+    })
 
+    vm.logout = function () {
+        AuthInfo.logout()
+        console.log(1);
+    }
 
 }

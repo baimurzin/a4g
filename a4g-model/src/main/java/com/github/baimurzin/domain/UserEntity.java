@@ -1,5 +1,7 @@
 package com.github.baimurzin.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.github.baimurzin.domain.enums.UserRoles;
 
 import javax.persistence.*;
@@ -13,6 +15,7 @@ public class UserEntity extends BaseEntity{
 
     private String email;
     private String login;
+    @JsonIgnore
     private String password;
     @OneToOne(fetch =FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "userEntity")
     private UserInfoEntity userInfoEntity;

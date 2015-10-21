@@ -10,8 +10,14 @@ AuthApiService.$inject = ['$http'];
 function AuthApiService($http) {
     return {
         login:login,
-        session: session
+        session: session,
+        logout: logout,
+        requestSession: requestSession
     };
+
+    function requestSession() {
+        return $http.get('/api/session');
+    }
 
     function login(form) {
         return $http.post('/j_spring_security_check', $.param(form),
@@ -20,5 +26,9 @@ function AuthApiService($http) {
 
     function session() {
         return $http.get('/api/session');
+    }
+
+    function logout() {
+        return $http.post('/logout');
     }
 }

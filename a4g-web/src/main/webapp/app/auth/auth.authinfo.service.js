@@ -19,12 +19,15 @@ function AuthInfo($location, AuthApiService, $q, $rootScope) {
     }
 
     return {
+        getUser: function () {
+            return user;
+        },
         login: function (form) {
             var self = this;
             var data = {j_username: form.username, j_password:form.password};
             return AuthApiService.login(data).then(function (response) {
                 $rootScope.$broadcast('authStateChanged', true);
-                setUser(response);
+                setUser(user.data.response);
             }, function (error) {
                 return $q.reject(error);
             });
@@ -39,18 +42,30 @@ function AuthInfo($location, AuthApiService, $q, $rootScope) {
             this.checkUser();
             return !(user == null);
         },
-        getUser: function () {
-
-        },
         checkUser: function () {
             if (checked == false) return;
             checked = true;
             AuthApiService.requestSession().then(function (user) {
-                setUser(user);
+                setUser(user.data.response);
                 $rootScope.$broadcast('authStateChanged', true);
             }, function (error) {
 
             })
+        },
+        checkAuthUser: function () {
+            var defer = $q.defer();
+            AuthApiService.requestSession().then(function (user) {
+                setUser(user.data.response);
+                $rootScope.$broadcast('authStateChanged', true);defer.resolve();
+                checked = true;
+            }, function (err) {
+                defer.reject(err);
+                checked = true;
+            })
+            return defer.promise;
+        },
+        isCheckedUser: function () {
+            return checked;
         }
     }
 }
