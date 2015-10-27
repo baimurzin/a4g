@@ -52,11 +52,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .invalidateHttpSession(true)
                     .and()
                 .authorizeRequests()
-                    .antMatchers("/apanel/**").access("hasRole('ROLE_ADMIN')")
-                    .and()
-                .rememberMe()
-                    .tokenRepository(persistentTokenRepository())
-                    .tokenValiditySeconds(1209600);
+                    .antMatchers("/apanel/**").access("hasRole('ROLE_ADMIN')");
+//                .rememberMe()
+//                    .tokenRepository(persistentTokenRepository())
+//                    .tokenValiditySeconds(1209600);
           http.formLogin()
                     .loginPage("/login")
                     .loginProcessingUrl("/j_spring_security_check")

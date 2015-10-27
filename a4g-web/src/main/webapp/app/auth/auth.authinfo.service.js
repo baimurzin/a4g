@@ -27,7 +27,7 @@ function AuthInfo($location, AuthApiService, $q, $rootScope) {
             var data = {j_username: form.username, j_password:form.password};
             return AuthApiService.login(data).then(function (response) {
                 $rootScope.$broadcast('authStateChanged', true);
-                setUser(user.data.response);
+                setUser(response.data.response);
             }, function (error) {
                 return $q.reject(error);
             });
@@ -36,6 +36,7 @@ function AuthInfo($location, AuthApiService, $q, $rootScope) {
             AuthApiService.logout().then(function (e) {
                 clearUser();
                 $rootScope.$broadcast('authStateChanged', false);
+                $location.path('/');
             })
         },
         isLogin: function () {

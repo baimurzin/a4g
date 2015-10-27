@@ -4,7 +4,8 @@
 angular
     .module('a4g', [
         'ngRoute',
-        'auth'
+        'auth',
+        'profile'
     ]);
 
 angular.module('a4g').run(AppRun);
